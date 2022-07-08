@@ -1,0 +1,10 @@
+language: generic 
+sudo: required
+services :
+    - docker
+   
+before_install:
+    - docker build -t tsetsongdevops/docker-react-ci -f Dockerfile.dev .
+
+script:
+    - docker run -e CI=true tsetsongdevops/docker-react-ci npm run test
